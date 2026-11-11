@@ -1,5 +1,5 @@
 /*
- * Alien Abduction (Pasture Raid), a terminal game for Unix.
+ * Beam ’Em Up.c, a terminal game for Unix.
  * Build: cc -std=c99 -O2 alienabduction.c -o alienabduction
  * Play:  ./alienabduction [--ascii]
  *
@@ -137,9 +137,10 @@ static void draw(const struct game *g, int ascii, int fit) {
         fflush(stdout);
         return;
     }
-    printf(" PASTURE RAID  |  Cargo %d/%d  |  Time %2ds\033[K\r\n"
+    const char *title = ascii ? "Beam 'Em Up.c" : "Beam ’Em Up.c";
+    printf(" %s  |  Cargo %d/%d  |  Time %2ds\033[K\r\n"
            " Cows: %d   Goats: %d\033[K\r\n",
-           total, GOAL, (TICKS - g->tick + 9) / 10, g->cows, g->goats);
+           title, total, GOAL, (TICKS - g->tick + 9) / 10, g->cows, g->goats);
     for (int y = 0; y <= GROUND; ++y) {
         putchar('|');
         for (int x = 0; x < WIDTH; ++x) {
